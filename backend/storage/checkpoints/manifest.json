@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-10-20 11:26:46 UTC",
+  "random_seed": 42,
+  "epochs": 2,
+  "batch_size": 2,
+  "device": "cpu",
+  "geographic_region": "Assam, Brahmaputra Basin (UTM Zone 46N)",
+  "spatial_resolution": "5.0m GSD (ISRO LISS-IV native)",
+  "sar_modality": "Sentinel-1 GRD dual-pol (VV, VH) in dB [-25, 0]",
+  "git_commit": "c2b489a7",
+  "checkpoints": {
+    "baseline_b": {
+      "file": "unet_mask_aware_v1.pt",
+      "hash": "sha256:4cd1e3eee2c10f47",
+      "final_loss": 0.4302
+    },
+    "model_c": {
+      "file": "multimodal_fusion_v2.pt",
+      "hash": "sha256:c6f06754771d290b",
+      "final_loss": 0.2744
+    },
+    "model_d": {
+      "file": "cloudless_model_d_uncertainty.pt",
+      "hash": "sha256:d1f70b538143bbd4",
+      "final_loss": 0.1517
+    }
+  }
+}

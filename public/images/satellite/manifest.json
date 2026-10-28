@@ -1,0 +1,79 @@
+{
+  "project": "Cloudless AI",
+  "scene": "Brahmaputra River Valley, Assam, Northeast India",
+  "coordinates": "UTM Zone 46N (EPSG:32646)",
+  "resolution": "5.0m LISS-IV Equivalent",
+  "assets": [
+    {
+      "filename": "satellite-cloudy.jpg",
+      "type": "Optical RGB (Top of Atmosphere)",
+      "sensor": "ISRO Resourcesat-2A LISS-IV",
+      "cloud_coverage": "80.98%",
+      "status": "Demonstration Synthetic Optical Acquisition",
+      "description": "High-resolution true color scene with heavy white cumulus cloud cover and realistic cloud shadows."
+    },
+    {
+      "filename": "satellite-clear-reference-demo.jpg",
+      "type": "Optical RGB (Cloud-free Ground Truth)",
+      "sensor": "ISRO Resourcesat-2A LISS-IV",
+      "cloud_coverage": "0.00%",
+      "status": "Demonstration Reference Imagery",
+      "description": "True color cloud-free acquisition of the identical geographic scene."
+    },
+    {
+      "filename": "satellite-reconstructed-demo.jpg",
+      "type": "Model Inference Output",
+      "sensor": "Multi-Modal Generative AI (SAR + Temporal Guided)",
+      "metrics": { "psnr": 39.67, "ssim": 0.9834, "sam": 1.6 },
+      "status": "AI Reconstructed Surface Output",
+      "description": "High-fidelity reconstructed surface with clouds removed, retaining sharp riverbanks, fields, and forest boundaries."
+    },
+    {
+      "filename": "satellite-sar-demo.jpg",
+      "type": "Synthetic Aperture Radar (C-Band VV/VH Dual-Pol)",
+      "sensor": "ESA Sentinel-1",
+      "status": "Illustrative SAR Visualization",
+      "description": "Microwave backscatter with penetration through cloud cover. Magenta soil/built-up, green vegetation highlights, dark water channel."
+    },
+    {
+      "filename": "satellite-temporal-demo.jpg",
+      "type": "Temporal Reference Acquisition",
+      "sensor": "ISRO LISS-IV (01-NOV-2023)",
+      "status": "Auxiliary Temporal Guidance Imagery",
+      "description": "Cloud-free autumn scene used to provide structural texture and spectral priors."
+    },
+    {
+      "filename": "satellite-fcc-demo.jpg",
+      "type": "Standard False Color Composite (NIR-Red-Green)",
+      "sensor": "ISRO Resourcesat-2A LISS-IV",
+      "status": "Multi-Spectral Demonstration Asset",
+      "description": "Near-infrared false color composite highlighting healthy dense biomass in vibrant crimson."
+    },
+    {
+      "filename": "cloud-shadow-mask-demo.png",
+      "type": "Binary Cloud and Shadow Mask",
+      "status": "Segmentation Output (Binary: 255 Cloud/Shadow, 0 Clear)",
+      "description": "Aligned cloud mask indicating areas targeted for multi-modal generative inpainting."
+    },
+    {
+      "filename": "confidence-map-demo.png",
+      "type": "Continuous Spatial Confidence Heatmap",
+      "status": "Uncertainty Estimation Layer",
+      "description": "Viridis colormap representing reconstruction confidence from 0.0 (blue) to 1.0 (yellow)."
+    },
+    {
+      "filename": "lulc-original-demo.png",
+      "type": "Land Use / Land Cover (LULC) Classification Map",
+      "sensor": "LISS-IV Cloudy Input with Class Predictions",
+      "status": "Classification Baseline",
+      "description": "8-class classification affected by cloud occlusion."
+    },
+    {
+      "filename": "lulc-reconstructed-demo.png",
+      "type": "Land Use / Land Cover (LULC) Classification Map",
+      "sensor": "LISS-IV Reconstructed Output",
+      "status": "Analysis-Ready Classification",
+      "description": "Complete continuous 8-class thematic map showing water, dense forest, sparse vegetation, agriculture, built-up, barren, and wetlands."
+    }
+  ]
+}

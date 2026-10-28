@@ -1,0 +1,47 @@
+# CLOUDLESS AI | Multi-Modal Generative Satellite Cloud Removal
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLOUDLESS AI | Multi-Modal Generative Satellite Cloud Removal</title>
+    <meta name="description" content="Physics-guided, multi-modal generative AI framework for automated cloud removal and surface reconstruction in ISRO Resourcesat-2 LISS-IV optical satellite imagery.">
+    
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS Script -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        slate: {
+                            950: '#070B14',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased min-h-screen">
+    <!-- React Root Mount Target -->
+    <div id="root"></div>
+
+    <!-- Vendor Scripts (React 18 & ReactDOM) -->
+    <script src="/static/vendor/react.production.min.js"></script>
+    <script src="/static/vendor/react-dom.production.min.js"></script>
+
+    <!-- Precompiled Modular Component-Driven Application Bundle -->
+    <script src="/static/js/bundle.compiled.js?v=20261020_v2"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+# Cloudless AI - Backend Dependencies
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+pydantic==2.7.4
+torch>=2.2.0
+torchvision>=0.17.0
+numpy>=1.26.0,<2.0.0
+scipy>=1.13.0
+scikit-learn>=1.5.0
+pillow>=10.3.0
+rasterio>=1.3.10
+tifffile>=2024.5.10
+python-multipart>=0.0.9
+requests>=2.32.0
+pytest>=8.2.0
+httpx>=0.27.0
+
+# Windows GDAL/Rasterio Environment Note:
+# On Windows, Rasterio and GDAL C-extensions should be installed either via conda-forge:
+#   conda install -c conda-forge gdal rasterio
+# or using pre-compiled wheels from Christoph Gohlke's archive:
+#   pip install GDAL-3.8.x-cp312-cp312-win_amd64.whl
+#   pip install rasterio-1.3.x-cp312-cp312-win_amd64.whl
+
