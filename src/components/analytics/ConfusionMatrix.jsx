@@ -1,8 +1,8 @@
 import React from 'react';
 import { CONFUSION_MATRIX_DATA } from '../../data/mockData';
 
-export default function ConfusionMatrix() {
-  const { labels, matrix } = CONFUSION_MATRIX_DATA;
+export default function ConfusionMatrix({ data: customData }) {
+  const { labels, matrix } = customData || CONFUSION_MATRIX_DATA;
 
   return (
     <div style={{ overflowX: 'auto', width: '100%' }}>

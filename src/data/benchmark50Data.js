@@ -1,0 +1,802 @@
+export const BENCHMARK_50_SCENES = [
+  {
+    "id": 1,
+    "name": "Scene #01",
+    "coords": {
+      "x": 0,
+      "y": 6
+    },
+    "cloud_coverage_pct": 21.7,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.362,
+    "recovered_veg_km2": 0.27,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_01_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_01_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_01_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_01_ndvi.png"
+  },
+  {
+    "id": 2,
+    "name": "Scene #02",
+    "coords": {
+      "x": 122,
+      "y": 0
+    },
+    "cloud_coverage_pct": 3.8,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.366,
+    "recovered_veg_km2": 0.04,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_02_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_02_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_02_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_02_ndvi.png"
+  },
+  {
+    "id": 3,
+    "name": "Scene #03",
+    "coords": {
+      "x": 256,
+      "y": 0
+    },
+    "cloud_coverage_pct": 13.5,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.494,
+    "recovered_veg_km2": 0.19,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_03_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_03_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_03_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_03_ndvi.png"
+  },
+  {
+    "id": 4,
+    "name": "Scene #04",
+    "coords": {
+      "x": 379,
+      "y": 2
+    },
+    "cloud_coverage_pct": 28.2,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.513,
+    "recovered_veg_km2": 0.41,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_04_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_04_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_04_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_04_ndvi.png"
+  },
+  {
+    "id": 5,
+    "name": "Scene #05",
+    "coords": {
+      "x": 495,
+      "y": 0
+    },
+    "cloud_coverage_pct": 55.5,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.497,
+    "recovered_veg_km2": 0.77,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_05_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_05_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_05_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_05_ndvi.png"
+  },
+  {
+    "id": 6,
+    "name": "Scene #06",
+    "coords": {
+      "x": 617,
+      "y": 0
+    },
+    "cloud_coverage_pct": 84.7,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.445,
+    "recovered_veg_km2": 1.03,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_06_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_06_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_06_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_06_ndvi.png"
+  },
+  {
+    "id": 7,
+    "name": "Scene #07",
+    "coords": {
+      "x": 755,
+      "y": 0
+    },
+    "cloud_coverage_pct": 91.9,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.376,
+    "recovered_veg_km2": 0.95,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_07_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_07_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_07_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_07_ndvi.png"
+  },
+  {
+    "id": 8,
+    "name": "Scene #08",
+    "coords": {
+      "x": 882,
+      "y": 3
+    },
+    "cloud_coverage_pct": 92.3,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.432,
+    "recovered_veg_km2": 1.1,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_08_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_08_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_08_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_08_ndvi.png"
+  },
+  {
+    "id": 9,
+    "name": "Scene #09",
+    "coords": {
+      "x": 988,
+      "y": 0
+    },
+    "cloud_coverage_pct": 87.5,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.422,
+    "recovered_veg_km2": 1.03,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_09_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_09_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_09_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_09_ndvi.png"
+  },
+  {
+    "id": 10,
+    "name": "Scene #10",
+    "coords": {
+      "x": 1120,
+      "y": 0
+    },
+    "cloud_coverage_pct": 69.7,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.408,
+    "recovered_veg_km2": 0.8,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_10_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_10_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_10_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_10_ndvi.png"
+  },
+  {
+    "id": 11,
+    "name": "Scene #11",
+    "coords": {
+      "x": 0,
+      "y": 131
+    },
+    "cloud_coverage_pct": 49.2,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.42,
+    "recovered_veg_km2": 0.63,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_11_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_11_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_11_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_11_ndvi.png"
+  },
+  {
+    "id": 12,
+    "name": "Scene #12",
+    "coords": {
+      "x": 136,
+      "y": 136
+    },
+    "cloud_coverage_pct": 25.6,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.407,
+    "recovered_veg_km2": 0.31,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_12_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_12_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_12_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_12_ndvi.png"
+  },
+  {
+    "id": 13,
+    "name": "Scene #13",
+    "coords": {
+      "x": 245,
+      "y": 135
+    },
+    "cloud_coverage_pct": 17.2,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.479,
+    "recovered_veg_km2": 0.25,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_13_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_13_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_13_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_13_ndvi.png"
+  },
+  {
+    "id": 14,
+    "name": "Scene #14",
+    "coords": {
+      "x": 375,
+      "y": 134
+    },
+    "cloud_coverage_pct": 8.1,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.353,
+    "recovered_veg_km2": 0.09,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_14_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_14_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_14_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_14_ndvi.png"
+  },
+  {
+    "id": 15,
+    "name": "Scene #15",
+    "coords": {
+      "x": 503,
+      "y": 131
+    },
+    "cloud_coverage_pct": 23.8,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.405,
+    "recovered_veg_km2": 0.27,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_15_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_15_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_15_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_15_ndvi.png"
+  },
+  {
+    "id": 16,
+    "name": "Scene #16",
+    "coords": {
+      "x": 632,
+      "y": 122
+    },
+    "cloud_coverage_pct": 57.3,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.382,
+    "recovered_veg_km2": 0.61,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_16_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_16_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_16_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_16_ndvi.png"
+  },
+  {
+    "id": 17,
+    "name": "Scene #17",
+    "coords": {
+      "x": 738,
+      "y": 126
+    },
+    "cloud_coverage_pct": 67.4,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.347,
+    "recovered_veg_km2": 0.66,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_17_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_17_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_17_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_17_ndvi.png"
+  },
+  {
+    "id": 18,
+    "name": "Scene #18",
+    "coords": {
+      "x": 879,
+      "y": 128
+    },
+    "cloud_coverage_pct": 68.3,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.308,
+    "recovered_veg_km2": 0.61,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_18_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_18_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_18_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_18_ndvi.png"
+  },
+  {
+    "id": 19,
+    "name": "Scene #19",
+    "coords": {
+      "x": 989,
+      "y": 123
+    },
+    "cloud_coverage_pct": 79.6,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.288,
+    "recovered_veg_km2": 0.68,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_19_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_19_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_19_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_19_ndvi.png"
+  },
+  {
+    "id": 20,
+    "name": "Scene #20",
+    "coords": {
+      "x": 1120,
+      "y": 133
+    },
+    "cloud_coverage_pct": 92.4,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.323,
+    "recovered_veg_km2": 0.89,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_20_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_20_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_20_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_20_ndvi.png"
+  },
+  {
+    "id": 21,
+    "name": "Scene #21",
+    "coords": {
+      "x": 5,
+      "y": 256
+    },
+    "cloud_coverage_pct": 80.9,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.214,
+    "recovered_veg_km2": 0.55,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_21_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_21_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_21_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_21_ndvi.png"
+  },
+  {
+    "id": 22,
+    "name": "Scene #22",
+    "coords": {
+      "x": 132,
+      "y": 249
+    },
+    "cloud_coverage_pct": 66.4,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.266,
+    "recovered_veg_km2": 0.55,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_22_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_22_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_22_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_22_ndvi.png"
+  },
+  {
+    "id": 23,
+    "name": "Scene #23",
+    "coords": {
+      "x": 255,
+      "y": 262
+    },
+    "cloud_coverage_pct": 54.7,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.363,
+    "recovered_veg_km2": 0.62,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_23_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_23_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_23_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_23_ndvi.png"
+  },
+  {
+    "id": 24,
+    "name": "Scene #24",
+    "coords": {
+      "x": 367,
+      "y": 259
+    },
+    "cloud_coverage_pct": 24.1,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.422,
+    "recovered_veg_km2": 0.32,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_24_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_24_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_24_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_24_ndvi.png"
+  },
+  {
+    "id": 25,
+    "name": "Scene #25",
+    "coords": {
+      "x": 492,
+      "y": 262
+    },
+    "cloud_coverage_pct": 3.1,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.291,
+    "recovered_veg_km2": 0.03,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_25_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_25_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_25_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_25_ndvi.png"
+  },
+  {
+    "id": 26,
+    "name": "Scene #26",
+    "coords": {
+      "x": 612,
+      "y": 261
+    },
+    "cloud_coverage_pct": 11.8,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.316,
+    "recovered_veg_km2": 0.11,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_26_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_26_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_26_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_26_ndvi.png"
+  },
+  {
+    "id": 27,
+    "name": "Scene #27",
+    "coords": {
+      "x": 750,
+      "y": 251
+    },
+    "cloud_coverage_pct": 29.6,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.355,
+    "recovered_veg_km2": 0.3,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_27_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_27_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_27_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_27_ndvi.png"
+  },
+  {
+    "id": 28,
+    "name": "Scene #28",
+    "coords": {
+      "x": 876,
+      "y": 255
+    },
+    "cloud_coverage_pct": 30.3,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.272,
+    "recovered_veg_km2": 0.24,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_28_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_28_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_28_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_28_ndvi.png"
+  },
+  {
+    "id": 29,
+    "name": "Scene #29",
+    "coords": {
+      "x": 986,
+      "y": 249
+    },
+    "cloud_coverage_pct": 49.4,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.203,
+    "recovered_veg_km2": 0.3,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_29_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_29_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_29_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_29_ndvi.png"
+  },
+  {
+    "id": 30,
+    "name": "Scene #30",
+    "coords": {
+      "x": 1113,
+      "y": 257
+    },
+    "cloud_coverage_pct": 84.6,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.273,
+    "recovered_veg_km2": 0.7,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_30_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_30_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_30_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_30_ndvi.png"
+  },
+  {
+    "id": 31,
+    "name": "Scene #31",
+    "coords": {
+      "x": 0,
+      "y": 387
+    },
+    "cloud_coverage_pct": 91.7,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.134,
+    "recovered_veg_km2": 0.41,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_31_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_31_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_31_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_31_ndvi.png"
+  },
+  {
+    "id": 32,
+    "name": "Scene #32",
+    "coords": {
+      "x": 113,
+      "y": 385
+    },
+    "cloud_coverage_pct": 95.9,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.12,
+    "recovered_veg_km2": 0.37,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_32_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_32_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_32_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_32_ndvi.png"
+  },
+  {
+    "id": 33,
+    "name": "Scene #33",
+    "coords": {
+      "x": 239,
+      "y": 389
+    },
+    "cloud_coverage_pct": 84.5,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.215,
+    "recovered_veg_km2": 0.57,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_33_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_33_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_33_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_33_ndvi.png"
+  },
+  {
+    "id": 34,
+    "name": "Scene #34",
+    "coords": {
+      "x": 376,
+      "y": 390
+    },
+    "cloud_coverage_pct": 36.6,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.337,
+    "recovered_veg_km2": 0.37,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_34_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_34_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_34_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_34_ndvi.png"
+  },
+  {
+    "id": 35,
+    "name": "Scene #35",
+    "coords": {
+      "x": 492,
+      "y": 389
+    },
+    "cloud_coverage_pct": 15.2,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.32,
+    "recovered_veg_km2": 0.15,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_35_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_35_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_35_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_35_ndvi.png"
+  },
+  {
+    "id": 36,
+    "name": "Scene #36",
+    "coords": {
+      "x": 632,
+      "y": 383
+    },
+    "cloud_coverage_pct": 14.7,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.303,
+    "recovered_veg_km2": 0.14,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_36_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_36_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_36_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_36_ndvi.png"
+  },
+  {
+    "id": 37,
+    "name": "Scene #37",
+    "coords": {
+      "x": 754,
+      "y": 391
+    },
+    "cloud_coverage_pct": 7.6,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.299,
+    "recovered_veg_km2": 0.07,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_37_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_37_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_37_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_37_ndvi.png"
+  },
+  {
+    "id": 38,
+    "name": "Scene #38",
+    "coords": {
+      "x": 871,
+      "y": 390
+    },
+    "cloud_coverage_pct": 4.0,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.289,
+    "recovered_veg_km2": 0.03,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_38_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_38_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_38_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_38_ndvi.png"
+  },
+  {
+    "id": 39,
+    "name": "Scene #39",
+    "coords": {
+      "x": 1003,
+      "y": 388
+    },
+    "cloud_coverage_pct": 20.6,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.256,
+    "recovered_veg_km2": 0.16,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_39_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_39_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_39_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_39_ndvi.png"
+  },
+  {
+    "id": 40,
+    "name": "Scene #40",
+    "coords": {
+      "x": 1116,
+      "y": 390
+    },
+    "cloud_coverage_pct": 58.1,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.263,
+    "recovered_veg_km2": 0.46,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_40_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_40_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_40_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_40_ndvi.png"
+  },
+  {
+    "id": 41,
+    "name": "Scene #41",
+    "coords": {
+      "x": 0,
+      "y": 504
+    },
+    "cloud_coverage_pct": 85.0,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.266,
+    "recovered_veg_km2": 0.69,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_41_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_41_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_41_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_41_ndvi.png"
+  },
+  {
+    "id": 42,
+    "name": "Scene #42",
+    "coords": {
+      "x": 136,
+      "y": 510
+    },
+    "cloud_coverage_pct": 94.5,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.125,
+    "recovered_veg_km2": 0.38,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_42_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_42_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_42_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_42_ndvi.png"
+  },
+  {
+    "id": 43,
+    "name": "Scene #43",
+    "coords": {
+      "x": 244,
+      "y": 504
+    },
+    "cloud_coverage_pct": 88.8,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.108,
+    "recovered_veg_km2": 0.32,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_43_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_43_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_43_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_43_ndvi.png"
+  },
+  {
+    "id": 44,
+    "name": "Scene #44",
+    "coords": {
+      "x": 372,
+      "y": 511
+    },
+    "cloud_coverage_pct": 50.7,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.208,
+    "recovered_veg_km2": 0.32,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_44_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_44_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_44_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_44_ndvi.png"
+  },
+  {
+    "id": 45,
+    "name": "Scene #45",
+    "coords": {
+      "x": 508,
+      "y": 512
+    },
+    "cloud_coverage_pct": 43.3,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.455,
+    "recovered_veg_km2": 0.56,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_45_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_45_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_45_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_45_ndvi.png"
+  },
+  {
+    "id": 46,
+    "name": "Scene #46",
+    "coords": {
+      "x": 628,
+      "y": 512
+    },
+    "cloud_coverage_pct": 50.8,
+    "dominant_subcloud_feature": "Dense Forest & Canopy",
+    "mean_subcloud_ndvi": 0.454,
+    "recovered_veg_km2": 0.66,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_46_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_46_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_46_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_46_ndvi.png"
+  },
+  {
+    "id": 47,
+    "name": "Scene #47",
+    "coords": {
+      "x": 741,
+      "y": 506
+    },
+    "cloud_coverage_pct": 27.1,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.36,
+    "recovered_veg_km2": 0.3,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_47_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_47_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_47_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_47_ndvi.png"
+  },
+  {
+    "id": 48,
+    "name": "Scene #48",
+    "coords": {
+      "x": 861,
+      "y": 504
+    },
+    "cloud_coverage_pct": 6.1,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.24,
+    "recovered_veg_km2": 0.05,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_48_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_48_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_48_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_48_ndvi.png"
+  },
+  {
+    "id": 49,
+    "name": "Scene #49",
+    "coords": {
+      "x": 987,
+      "y": 512
+    },
+    "cloud_coverage_pct": 4.4,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.23,
+    "recovered_veg_km2": 0.03,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_49_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_49_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_49_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_49_ndvi.png"
+  },
+  {
+    "id": 50,
+    "name": "Scene #50",
+    "coords": {
+      "x": 1114,
+      "y": 512
+    },
+    "cloud_coverage_pct": 36.2,
+    "dominant_subcloud_feature": "Agriculture / Cropland",
+    "mean_subcloud_ndvi": 0.279,
+    "recovered_veg_km2": 0.3,
+    "cloudy_url": "/images/benchmarks/scenes_50/scene_50_cloudy.jpg",
+    "recon_url": "/images/benchmarks/scenes_50/scene_50_recon.jpg",
+    "subcloud_url": "/images/benchmarks/scenes_50/scene_50_subcloud.png",
+    "ndvi_url": "/images/benchmarks/scenes_50/scene_50_ndvi.png"
+  }
+];

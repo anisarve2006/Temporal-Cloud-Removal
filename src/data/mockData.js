@@ -17,6 +17,11 @@ export const SATELLITE_ASSETS = {
   cropDisasterAfter: '/images/satellite/crop-disaster-after.jpg',
   cropEnvBefore: '/images/satellite/crop-env-before.jpg',
   cropEnvAfter: '/images/satellite/crop-env-after.jpg',
+  subcloudTerrainFull: '/images/satellite/subcloud-terrain-full-demo.png',
+  subcloudTerrainMasked: '/images/satellite/subcloud-terrain-masked-demo.png',
+  vegetationHealthDiscrete: '/images/satellite/vegetation-health-discrete-demo.png',
+  vegetationHealthNdvi: '/images/satellite/vegetation-health-ndvi-demo.png',
+  annotated: '/images/satellite/annotated_subcloud_features.png',
 };
 
 export const PRIMARY_SCENE_INFO = {
@@ -260,3 +265,45 @@ export const DATASET_CATALOG = [
     tag: 'Temporal Prior'
   }
 ];
+
+export const SUBCLOUD_CLASSES = [
+  { id: 0, key: 'water', name: 'Water Bodies (River / Lake)', color: '#2563eb', subcloudAreaKm2: 0.51, subcloudPct: 3.75, fullAreaKm2: 1.12, description: 'Brahmaputra river channels & waterbodies' },
+  { id: 1, key: 'city', name: 'City / Built-up / Urban', color: '#ef4444', subcloudAreaKm2: 0.04, subcloudPct: 0.29, fullAreaKm2: 0.15, description: 'Dense urban clusters & settlement structures' },
+  { id: 2, key: 'road', name: 'Roads & Transport Networks', color: '#f97316', subcloudAreaKm2: 0.78, subcloudPct: 5.74, fullAreaKm2: 1.48, description: 'Linear road network corridors (155.2 km recovered)' },
+  { id: 3, key: 'forest', name: 'Dense Forest & Canopy', color: '#15803d', subcloudAreaKm2: 4.86, subcloudPct: 35.76, fullAreaKm2: 9.68, description: 'Continuous forest canopy & rich woodland' },
+  { id: 4, key: 'mountain', name: 'Mountain & High Relief', color: '#64748b', subcloudAreaKm2: 1.60, subcloudPct: 11.77, fullAreaKm2: 2.85, description: 'Elevated topography & rugged slopes' },
+  { id: 5, key: 'cropland', name: 'Cropland / Agriculture', color: '#eab308', subcloudAreaKm2: 4.82, subcloudPct: 35.47, fullAreaKm2: 9.38, description: 'Cultivated agricultural plots & tea gardens' },
+  { id: 6, key: 'barren', name: 'Barren / Exposed Soil', color: '#b45309', subcloudAreaKm2: 0.98, subcloudPct: 7.22, fullAreaKm2: 1.76, description: 'Fallow soil, cleared ground & sandy shoals' }
+];
+
+export const SUBCLOUD_DEMO_SUMMARY = {
+  totalSceneAreaKm2: 26.42,
+  cloudCoveredAreaKm2: 13.59,
+  cloudCoveragePct: 51.46,
+  dominantFeature: 'Dense Forest & Canopy (35.8%)',
+  roadNetworkKm: 155.21,
+  waterBodiesKm2: 0.51,
+  forestKm2: 4.86,
+  croplandKm2: 4.82,
+  cityKm2: 0.04,
+  mountainKm2: 1.60
+};
+
+export const VEGETATION_HEALTH_TIERS = [
+  { id: 0, key: 'non_vegetation', name: 'Water / Built / Non-Vegetated', range: 'NDVI < 0.10', hex: '#64748b', status: 'Non-Vegetated', subcloudAreaKm2: 1.54, subcloudPct: 11.33 },
+  { id: 1, key: 'severely_stressed', name: 'Severely Stressed / Dying Canopy', range: '0.10 ≤ NDVI < 0.25', hex: '#ef4444', status: 'Critical Stress Alert', subcloudAreaKm2: 1.51, subcloudPct: 11.11 },
+  { id: 2, key: 'moderate_stress', name: 'Moderate Stress / Low Vigor', range: '0.25 ≤ NDVI < 0.45', hex: '#f59e0b', status: 'Moderate Vigor', subcloudAreaKm2: 6.22, subcloudPct: 45.77 },
+  { id: 3, key: 'healthy', name: 'Healthy Canopy / Active Biomass', range: '0.45 ≤ NDVI < 0.70', hex: '#84cc16', status: 'Healthy / Productive', subcloudAreaKm2: 4.18, subcloudPct: 30.76 },
+  { id: 4, key: 'vibrant', name: 'Vibrant / Dense Photosynthetic', range: 'NDVI ≥ 0.70', hex: '#15803d', status: 'Peak Vigor', subcloudAreaKm2: 0.14, subcloudPct: 1.03 }
+];
+
+export const VEGETATION_HEALTH_SUMMARY = {
+  meanNdviFullScene: 0.343,
+  meanNdviBeneathCloud: 0.327,
+  meanSaviBeneathCloud: 0.237,
+  recoveredVegetationKm2: 7.97,
+  stressedVegetationKm2: 1.51,
+  cloudCoveredAreaKm2: 13.59,
+  dominantStatus: 'Moderate to Healthy Vigor (76.5% of vegetated canopy)',
+  nirReflectionGain: '+318% (Penetrated Optical Surface Restored)'
+};

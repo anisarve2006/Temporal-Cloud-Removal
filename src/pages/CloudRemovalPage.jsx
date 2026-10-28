@@ -65,6 +65,10 @@ export default function CloudRemovalPage({ onNavigate }) {
   const [maskDilationPx, setMaskDilationPx] = useState(3);
   const [validationStatus, setValidationStatus] = useState('APPROVED');
 
+  // Multi-Modal 9-Image Imagery Suite State
+  const [modalitySuiteFilter, setModalitySuiteFilter] = useState('all'); // 'all' | 'inputs' | 'reconstructions' | 'analytics'
+  const [expandedImage, setExpandedImage] = useState(null);
+
   const [isRunning, setIsRunning] = useState(false);
   const [hasProcessed, setHasProcessed] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
@@ -79,9 +83,18 @@ export default function CloudRemovalPage({ onNavigate }) {
   const [inferenceError, setInferenceError] = useState(null);
   const [toastMessage, setToastMessage] = useState(null);
 
+  // Automatically dismiss toast after exactly 2.5 seconds
+  useEffect(() => {
+    if (toastMessage) {
+      const timer = setTimeout(() => {
+        setToastMessage(null);
+      }, 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [toastMessage]);
+
   const showToast = (title, desc) => {
     setToastMessage({ title, desc });
-    setTimeout(() => setToastMessage(null), 3500);
   };
 
   const loadBenchmarks = async () => {
@@ -227,7 +240,7 @@ export default function CloudRemovalPage({ onNavigate }) {
 
   return (
     <div>
-      {/* Toast Notification */}
+      {/* Toast Notification with Close Button & 2.5s Auto-Dismiss */}
       {toastMessage && (
         <div
           style={{
@@ -236,19 +249,51 @@ export default function CloudRemovalPage({ onNavigate }) {
             right: '24px',
             background: '#064e3b',
             color: '#ffffff',
-            padding: '10px 16px',
+            padding: '10px 14px 10px 16px',
             borderRadius: '8px',
-            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.2)',
+            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.25)',
             zIndex: 9999,
             fontSize: '12px',
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
-            border: '1px solid rgba(255, 255, 255, 0.2)',
+            gap: '12px',
+            border: '1px solid rgba(255, 255, 255, 0.25)',
+            maxWidth: '480px',
+            animation: 'fadeIn 0.2s ease',
           }}
         >
-          <span style={{ fontWeight: 700 }}>{toastMessage.title}:</span>
-          <span>{toastMessage.desc}</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flex: 1 }}>
+            <span style={{ fontWeight: 700 }}>{toastMessage.title}:</span>
+            <span>{toastMessage.desc}</span>
+          </div>
+          <button
+            onClick={() => setToastMessage(null)}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: 'rgba(255, 255, 255, 0.8)',
+              cursor: 'pointer',
+              padding: '3px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: '4px',
+              transition: 'all 0.15s ease',
+              flexShrink: 0,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = '#ffffff';
+              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = 'rgba(255, 255, 255, 0.8)';
+              e.currentTarget.style.background = 'transparent';
+            }}
+            title="Close notification"
+            aria-label="Close"
+          >
+            <X size={15} />
+          </button>
         </div>
       )}
 
@@ -553,57 +598,246 @@ export default function CloudRemovalPage({ onNavigate }) {
       {/* Main Workspace Content: Results View when processed, Upload & Setup Station initially */}
       {hasProcessed ? (
         <>
-          {/* Top 4-Panel Grid: Inputs & Guidance (Only visible after processing) */}
+          {/* Multi-Modal 10-Imagery Suite Header Toolbar */}
+          <div className="card" style={{ padding: '14px 20px', marginBottom: '18px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
+              <div>
+                <h3 style={{ margin: 0, fontSize: '15px', fontWeight: 700, color: '#0f172a', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <Layers size={18} color="#2563eb" />
+                  <span>Comprehensive Multi-Modal Imagery Suite (10 Modalities • Generation Pipeline Order)</span>
+                  <span style={{ fontSize: '10.5px', background: '#dcfce7', color: '#15803d', padding: '2px 8px', borderRadius: '10px', fontWeight: 600 }}>
+                    Upload Scene: {uploadSceneName}
+                  </span>
+                </h3>
+                <p style={{ margin: '4px 0 0 0', fontSize: '11.5px', color: '#64748b' }}>
+                  All 10 multi-spectral, radar, AI-reconstructed, and sub-cloud biophysical image types ordered strictly by physical generation &amp; model dependency DAG.
+                </p>
+              </div>
+
+              {/* Category Filter Buttons */}
+              <div style={{ display: 'flex', background: '#f1f5f9', borderRadius: '6px', padding: '3px', gap: '2px' }}>
+                <button
+                  onClick={() => setModalitySuiteFilter('all')}
+                  style={{
+                    padding: '5px 12px',
+                    fontSize: '11.5px',
+                    fontWeight: 600,
+                    borderRadius: '5px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    background: modalitySuiteFilter === 'all' ? '#2563eb' : 'transparent',
+                    color: modalitySuiteFilter === 'all' ? '#ffffff' : '#64748b',
+                  }}
+                >
+                  All 10 Modalities (DAG Order)
+                </button>
+                <button
+                  onClick={() => setModalitySuiteFilter('inputs')}
+                  style={{
+                    padding: '5px 12px',
+                    fontSize: '11.5px',
+                    fontWeight: 600,
+                    borderRadius: '5px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    background: modalitySuiteFilter === 'inputs' ? '#2563eb' : 'transparent',
+                    color: modalitySuiteFilter === 'inputs' ? '#ffffff' : '#64748b',
+                  }}
+                >
+                  1. Raw Inputs &amp; Mask
+                </button>
+                <button
+                  onClick={() => setModalitySuiteFilter('reconstructions')}
+                  style={{
+                    padding: '5px 12px',
+                    fontSize: '11.5px',
+                    fontWeight: 600,
+                    borderRadius: '5px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    background: modalitySuiteFilter === 'reconstructions' ? '#2563eb' : 'transparent',
+                    color: modalitySuiteFilter === 'reconstructions' ? '#ffffff' : '#64748b',
+                  }}
+                >
+                  2. AI Restoration &amp; Confidence
+                </button>
+                <button
+                  onClick={() => setModalitySuiteFilter('analytics')}
+                  style={{
+                    padding: '5px 12px',
+                    fontSize: '11.5px',
+                    fontWeight: 600,
+                    borderRadius: '5px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    background: modalitySuiteFilter === 'analytics' ? '#2563eb' : 'transparent',
+                    color: modalitySuiteFilter === 'analytics' ? '#ffffff' : '#64748b',
+                  }}
+                >
+                  3. Downstream Biophysical &amp; Diagnostics
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* 3x3 / Grid Showing All 10 Distinct Image Types in Generation Pipeline Order */}
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '14px',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: '16px',
               marginBottom: '20px',
             }}
           >
-            {/* Panel 1: Cloudy Input */}
-            <SatelliteMapCard
-              title="1. Cloudy LISS-IV Input (RGB)"
-              imageSrc={SATELLITE_ASSETS.cloudy}
-              scale="2 km"
-              tagText="Cloud Coverage: 80.98%"
-              aspectRatio="16 / 11"
-            />
-
-            {/* Panel 2: Cloud/Shadow Mask */}
-            <SatelliteMapCard
-              title="2. Detected Cloud/Shadow Mask"
-              imageSrc={SATELLITE_ASSETS.mask}
-              scale="2 km"
-              aspectRatio="16 / 11"
-            />
-
-            {/* Panel 3: Sentinel-1 SAR */}
-            <SatelliteMapCard
-              title="3. Sentinel-1 SAR (VV/VH)"
-              imageSrc={SATELLITE_ASSETS.sar}
-              scale="2 km"
-              tagText="C-Band Backscatter (VV/VH)"
-              aspectRatio="16 / 11"
-            />
-
-            {/* Panel 4: Temporal Reference */}
-            <SatelliteMapCard
-              title="4. Temporal Reference (RGB)"
-              imageSrc={SATELLITE_ASSETS.temporal}
-              scale="2 km"
-              tagText="01-NOV-2023"
-              aspectRatio="16 / 11"
-            />
+            {[
+              // PHASE 1: RAW MULTI-MODAL INPUTS
+              {
+                id: 'cloudy',
+                num: 1,
+                title: '1. Primary Optical Capture (Cloudy LISS-IV)',
+                category: 'inputs',
+                phase: 'Raw Input Feed 1',
+                imageSrc: SATELLITE_ASSETS.cloudy,
+                badge: 'Primary Optical Capture',
+                tagText: 'Cloud Cover: 80.98%',
+                scale: '2 km',
+                description: 'Top-of-atmosphere natural true color LISS-IV acquisition with opaque cumulus cloud cover and shadows to be removed.'
+              },
+              {
+                id: 'sar',
+                num: 2,
+                title: '2. Sentinel-1 SAR Radar Guidance (VV/VH)',
+                category: 'inputs',
+                phase: 'Raw Input Feed 2',
+                imageSrc: SATELLITE_ASSETS.sar,
+                badge: 'C-Band Dual-Pol (VV/VH)',
+                tagText: 'Microwave Cloud Penetration',
+                scale: '2 km',
+                description: 'Microwave radar backscatter penetrating clouds completely, providing invariant ground geometry, river channel paths, and roughness.'
+              },
+              {
+                id: 'temporal',
+                num: 3,
+                title: '3. Auxiliary Temporal Reference Prior',
+                category: 'inputs',
+                phase: 'Raw Input Feed 3',
+                imageSrc: SATELLITE_ASSETS.temporal,
+                badge: 'Historical Clear Reference',
+                tagText: '01-NOV-2023 Baseline',
+                scale: '2 km',
+                description: 'Cloud-free reference scene providing structural context, land-use memory, and baseline spectral reflectance prior to cloud arrival.'
+              },
+              // PHASE 2: DETECTION & TARGETED MASKING
+              {
+                id: 'mask',
+                num: 4,
+                title: '4. Detected Cloud & Shadow Inpainting Mask',
+                category: 'inputs',
+                phase: 'Derived from Input 1',
+                imageSrc: SATELLITE_ASSETS.mask,
+                badge: 'Binary Segmentation',
+                tagText: 'Targeted Inpainting Mask',
+                scale: '2 km',
+                description: 'Multi-spectral thresholding & morphological filter isolating obscured pixels where AI inpainting must be applied.'
+              },
+              // PHASE 3: CORE AI RECONSTRUCTION & RELIABILITY
+              {
+                id: 'reconstructed',
+                num: 5,
+                title: '5. Reconstructed Optical Surface (Model D RGB)',
+                category: 'reconstructions',
+                phase: 'Fused: Inputs 1+2+3 conditioned on 4',
+                imageSrc: SATELLITE_ASSETS.reconstructed,
+                badge: 'Model D Surface Output',
+                tagText: 'PSNR: 39.67 dB • SSIM: 0.9834',
+                scale: '2 km',
+                description: 'Physics-guided multi-modal diffusion restoration. Clear pixels locked bit-exact while cloud pixels are filled using SAR & temporal guidance.'
+              },
+              {
+                id: 'confidence',
+                num: 6,
+                title: '6. Spatial Uncertainty & Conformal Confidence Map',
+                category: 'reconstructions',
+                phase: 'Model D Uncertainty Head',
+                imageSrc: SATELLITE_ASSETS.confidence,
+                badge: 'UnCRtainTS Head',
+                tagText: 'Confidence Score [0.0 - 1.0]',
+                scale: '2 km',
+                hasColorbar: true,
+                description: 'Per-pixel calibrated conformal uncertainty heatmap generated concurrently with reconstruction. High confidence is yellow; uncertain zones trigger temporal fallback.'
+              },
+              // PHASE 4: MULTI-SPECTRAL & BIOPHYSICAL DERIVATIONS
+              {
+                id: 'fcc',
+                num: 7,
+                title: '7. False Color Composite (Standard FCC: NIR-R-G)',
+                category: 'analytics',
+                phase: 'Derived from Output 5',
+                imageSrc: SATELLITE_ASSETS.fcc,
+                badge: 'NIR - Red - Green Bands',
+                tagText: 'Chlorophyll Biomass',
+                scale: '2 km',
+                description: 'Standard remote sensing false color composite derived from reconstructed bands: vigorous vegetation reflects strongly in brilliant crimson.'
+              },
+              {
+                id: 'ndvi',
+                num: 8,
+                title: '8. NIR Multi-Spectral Vegetation Health (NDVI)',
+                category: 'analytics',
+                phase: 'Derived from Output 5 NIR & Red',
+                imageSrc: SATELLITE_ASSETS.vegetationHealthNdvi,
+                badge: 'Continuous NDVI Heatmap',
+                tagText: 'RdYlGn Photosynthetic Vigor',
+                scale: '2 km',
+                description: 'Canopy vigor index mapping vegetation health from Stressed Red (0.0-0.2) to Moderate Yellow (0.2-0.45) to Flourishing Emerald Green (0.45-0.85).'
+              },
+              {
+                id: 'subcloud',
+                num: 9,
+                title: '9. Sub-Cloud Deep Terrain Classification',
+                category: 'analytics',
+                phase: 'Derived from Output 5 within Mask 4',
+                imageSrc: SATELLITE_ASSETS.subcloudTerrainMasked,
+                badge: 'Thematic Labels Beneath Cloud',
+                tagText: 'Water, Roads, City, Forest, Mountain',
+                scale: '2 km',
+                description: 'Deep semantic segmentation specifically inside the cloud footprint: identifies and inventories Water, Roads, City, Forest, Mountain, Cropland, and Barren ground.'
+              },
+              {
+                id: 'annotated',
+                num: 10,
+                title: '10. Annotated Sub-Cloud Feature Diagnostics',
+                category: 'analytics',
+                phase: 'Synthesized Feature Extraction',
+                imageSrc: SATELLITE_ASSETS.annotated,
+                badge: 'Biophysical Diagnostic Callouts',
+                tagText: 'Exact Scene Features Labeled',
+                scale: '2 km',
+                description: 'Diagnostic map on this exact scene, identifying the restored river channel, meander loops, sandbars, northern mountain ridge, terraced crops, and canopy.'
+              }
+            ]
+              .filter((item) => modalitySuiteFilter === 'all' || item.category === modalitySuiteFilter)
+              .map((item) => (
+                <SatelliteMapCard
+                  key={item.id}
+                  title={item.title}
+                  imageSrc={item.imageSrc}
+                  scale={item.scale}
+                  tagText={item.tagText}
+                  badgeText={item.badge}
+                  hasColorbar={item.hasColorbar || false}
+                  aspectRatio="16 / 11"
+                  onExpand={() => setExpandedImage(item)}
+                />
+              ))}
           </div>
 
-          {/* Middle Row: Progress Tracker, Reconstruction, Confidence Map, Settings & Downloads */}
+          {/* Operational Row: Progress Tracker, Settings & Downloads */}
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: '1.1fr 1.35fr 1.35fr 1.2fr',
-              gap: '14px',
+              gridTemplateColumns: '1.2fr 1.2fr 1.2fr',
+              gap: '16px',
               marginBottom: '20px',
             }}
           >
@@ -612,7 +846,7 @@ export default function CloudRemovalPage({ onNavigate }) {
               <div className="card-header">
                 <span className="card-title">
                   <Clock size={15} color="#2878e5" />
-                  Processing Progress
+                  Processing Status
                 </span>
               </div>
               <div className="card-body" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -660,119 +894,87 @@ export default function CloudRemovalPage({ onNavigate }) {
               </div>
             </div>
 
-            {/* Panel 5: Reconstructed Output */}
-            <SatelliteMapCard
-              title={`5. Reconstructed LISS-IV (${spectralMode.includes('FCC') ? 'FCC' : 'RGB'})`}
-              imageSrc={
-                spectralMode.includes('FCC') ? SATELLITE_ASSETS.fcc : SATELLITE_ASSETS.reconstructed
-              }
-              scale="2 km"
-              tagText="PSNR: 39.67 dB | SSIM: 0.9834 | SAM: 1.6°"
-              aspectRatio="16 / 11"
-            />
-
-            {/* Panel 6: Confidence Map */}
-            <SatelliteMapCard
-              title="6. Confidence Map (Uncertainty Head)"
-              imageSrc={SATELLITE_ASSETS.confidence}
-              scale="2 km"
-              hasColorbar={true}
-              aspectRatio="16 / 11"
-            />
-
-            {/* Right Column: Processing Settings & Download Results */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-              {/* Settings Box */}
-              <div className="card">
-                <div className="card-header">
-                  <span className="card-title">
-                    <Settings size={14} color="#2878e5" />
-                    Processing Settings
-                  </span>
+            {/* Processing Settings & Parameters */}
+            <div className="card">
+              <div className="card-header">
+                <span className="card-title">
+                  <Settings size={14} color="#2878e5" />
+                  Inference &amp; Processing Settings
+                </span>
+              </div>
+              <div className="card-body" style={{ fontSize: '12px', display: 'flex', flexDirection: 'column', gap: '9px' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '11px', color: '#64748b', fontWeight: 600, marginBottom: '3px' }}>
+                    Active Scene
+                  </label>
+                  <input
+                    type="text"
+                    value={uploadSceneName}
+                    readOnly
+                    style={{ width: '100%', padding: '5px 8px', borderRadius: '5px', border: '1px solid #cbd5e1', fontSize: '11.5px', fontFamily: 'var(--font-mono)', background: '#f8fafc' }}
+                  />
                 </div>
-                <div className="card-body" style={{ fontSize: '12px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                  <div>
-                    <label style={{ display: 'block', fontSize: '11px', color: '#64748b', fontWeight: 600, marginBottom: '4px' }}>
-                      Spectral Mode
-                    </label>
-                    <select
-                      value={spectralMode}
-                      onChange={(e) => setSpectralMode(e.target.value)}
-                      style={{ width: '100%', padding: '5px 8px', borderRadius: '5px', border: '1px solid #cbd5e1', fontSize: '12px' }}
-                    >
-                      <option value="Natural True Color (RGB)">Natural True Color (RGB)</option>
-                      <option value="False Color Composite (FCC)">False Color Composite (FCC)</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label style={{ display: 'block', fontSize: '11px', color: '#64748b', fontWeight: 600, marginBottom: '4px' }}>
-                      Model
-                    </label>
-                    <select
-                      value={modelType}
-                      onChange={(e) => setModelType(e.target.value)}
-                      style={{ width: '100%', padding: '5px 8px', borderRadius: '5px', border: '1px solid #cbd5e1', fontSize: '12px' }}
-                    >
-                      <option value="Multi-Modal (SAR + Temporal)">Multi-Modal (SAR + Temporal)</option>
-                      <option value="SAR-Guided Diffuser">SAR-Guided Diffuser</option>
-                      <option value="Physics-Informed Optical GAN">Physics-Informed Optical GAN</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label style={{ display: 'block', fontSize: '11px', color: '#64748b', fontWeight: 600, marginBottom: '4px' }}>
-                      Output Resolution
-                    </label>
-                    <select
-                      value={resolution}
-                      onChange={(e) => setResolution(e.target.value)}
-                      style={{ width: '100%', padding: '5px 8px', borderRadius: '5px', border: '1px solid #cbd5e1', fontSize: '12px' }}
-                    >
-                      <option value="5 m (LISS-IV Native)">5 m (LISS-IV Native)</option>
-                      <option value="2.5 m (Super-Resolved)">2.5 m (Super-Resolved)</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label style={{ display: 'block', fontSize: '11px', color: '#64748b', fontWeight: 600, marginBottom: '4px' }}>
-                      Additional Outputs
-                    </label>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
-                      <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', cursor: 'pointer' }}>
-                        <input type="checkbox" checked={optConfidence} onChange={(e) => setOptConfidence(e.target.checked)} />
-                        <span>Confidence Map</span>
-                      </label>
-                      <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', cursor: 'pointer' }}>
-                        <input type="checkbox" checked={optMask} onChange={(e) => setOptMask(e.target.checked)} />
-                        <span>Cloud/Shadow Mask</span>
-                      </label>
-                      <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', cursor: 'pointer' }}>
-                        <input type="checkbox" checked={optProvenance} onChange={(e) => setOptProvenance(e.target.checked)} />
-                        <span>Data Provenance Layer</span>
-                      </label>
-                      <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', cursor: 'pointer' }}>
-                        <input type="checkbox" checked={optLulc} onChange={(e) => setOptLulc(e.target.checked)} />
-                        <span>LULC Analysis (Quick)</span>
-                      </label>
-                      <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', cursor: 'pointer' }}>
-                        <input type="checkbox" checked={optGraphs} onChange={(e) => setOptGraphs(e.target.checked)} />
-                        <span>Spectral Graphs</span>
-                      </label>
-                    </div>
-                  </div>
-
+                <div>
+                  <label style={{ display: 'block', fontSize: '11px', color: '#64748b', fontWeight: 600, marginBottom: '3px' }}>
+                    Model Architecture
+                  </label>
+                  <select
+                    value={modelType}
+                    onChange={(e) => setModelType(e.target.value)}
+                    style={{ width: '100%', padding: '5px 8px', borderRadius: '5px', border: '1px solid #cbd5e1', fontSize: '12px' }}
+                  >
+                    <option value="Multi-Modal (SAR + Temporal)">Model D (Uncertainty Diffusion)</option>
+                    <option value="SAR-Guided Diffuser">Model C (Cross-Attention)</option>
+                    <option value="Physics-Informed Optical GAN">Baseline B (Residual U-Net)</option>
+                  </select>
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '11px', color: '#64748b', fontWeight: 600, marginBottom: '3px' }}>
+                    Spectral Mode
+                  </label>
+                  <select
+                    value={spectralMode}
+                    onChange={(e) => setSpectralMode(e.target.value)}
+                    style={{ width: '100%', padding: '5px 8px', borderRadius: '5px', border: '1px solid #cbd5e1', fontSize: '12px' }}
+                  >
+                    <option value="Natural True Color (RGB)">Natural True Color (RGB)</option>
+                    <option value="False Color Composite (FCC)">False Color Composite (FCC)</option>
+                  </select>
+                </div>
+                <div>
+                  <label style={{ display: 'block', fontSize: '11px', color: '#64748b', fontWeight: 600, marginBottom: '3px' }}>
+                    Spatial Resolution
+                  </label>
+                  <select
+                    value={resolution}
+                    onChange={(e) => setResolution(e.target.value)}
+                    style={{ width: '100%', padding: '5px 8px', borderRadius: '5px', border: '1px solid #cbd5e1', fontSize: '12px' }}
+                  >
+                    <option value="5 m (LISS-IV Native)">5 m (LISS-IV Native)</option>
+                    <option value="2.5 m (Super-Resolved)">2.5 m (Super-Resolved)</option>
+                  </select>
+                </div>
+                <div style={{ display: 'flex', gap: '8px', marginTop: '4px' }}>
                   <button
                     className="btn-primary"
-                    style={{ width: '100%', justifyContent: 'center', padding: '9px', marginTop: '6px' }}
+                    style={{ flex: 1, justifyContent: 'center', padding: '7px 10px', fontSize: '11.5px' }}
                     onClick={handleRunInference}
                     disabled={isRunning}
                   >
-                    <span>{isRunning ? 'Running...' : 'Re-run Inference'}</span>
-                    <Play size={13} fill="#081827" />
+                    <Play size={12} fill="#081827" />
+                    <span>{isRunning ? 'Running...' : 'Re-run'}</span>
+                  </button>
+                  <button
+                    className="btn-secondary"
+                    style={{ flex: 1, justifyContent: 'center', padding: '7px 10px', fontSize: '11.5px' }}
+                    onClick={() => setShowUploadModal(true)}
+                  >
+                    <Upload size={12} />
+                    <span>Upload Scene</span>
                   </button>
                 </div>
               </div>
+            </div>
 
               {/* Download Results Card */}
               <div className="card">
@@ -904,7 +1106,6 @@ export default function CloudRemovalPage({ onNavigate }) {
                 </div>
               </div>
             </div>
-          </div>
 
           {/* Bottom Section: Image Information, Spectral Analysis with Table, Scene Metrics */}
           <div
@@ -1181,28 +1382,91 @@ export default function CloudRemovalPage({ onNavigate }) {
                           const f = e.target.files && e.target.files[0];
                           if (f) {
                             setUploadSceneName(f.name);
-                            setToastMessage({ title: 'Scene Selected', desc: `Loaded ${f.name}. Click Run Inference to process.` });
+                            setHasProcessed(true);
+                            setCurrentStep(3);
+                            showToast('Scene Uploaded', `Loaded ${f.name}. Rendering all 10 multi-modal imagery products below.`);
                           }
                         }}
                       />
                     </label>
                     <button
-                      className="btn-secondary"
-                      style={{ fontSize: '11.5px', padding: '6px 12px' }}
+                      className="btn-primary"
+                      style={{ fontSize: '11.5px', padding: '6px 14px', display: 'inline-flex', alignItems: 'center', gap: '5px' }}
                       onClick={() => {
                         setUploadSceneName('Assam_12JUN2023_LISS4.tif');
-                        setToastMessage({ title: 'Demo Scene Loaded', desc: 'Assam Brahmaputra Basin (12-JUN-2023) ready for inference.' });
+                        setHasProcessed(true);
+                        setCurrentStep(3);
+                        showToast('Assam Benchmark Loaded', 'Rendering all 10 multi-modal images in generation dependency order.');
                       }}
                     >
-                      Use Assam Benchmark Scene
+                      <span>⚡ Auto-Render All 10 Modalities</span>
                     </button>
+                    <a
+                      href="/downloads/Assam_12JUN2023_LISS4.tif"
+                      download="Assam_12JUN2023_LISS4.tif"
+                      className="btn-secondary"
+                      style={{ fontSize: '11.5px', padding: '6px 12px', display: 'inline-flex', alignItems: 'center', gap: '5px', textDecoration: 'none' }}
+                      title="Download Assam_12JUN2023_LISS4.tif (2.7 MB GeoTIFF) to your local machine"
+                    >
+                      <Download size={12} color="#16a34a" />
+                      <span>Download Assam_12JUN2023_LISS4.tif</span>
+                    </a>
                     <button
                       className="btn-secondary"
                       style={{ fontSize: '11.5px', padding: '6px 12px' }}
                       onClick={() => setShowUploadModal(true)}
                     >
-                      Configure All Inputs &rarr;
+                      Upload &amp; Validate Custom Scene &rarr;
                     </button>
+                  </div>
+
+                  {/* Sample Test Datasets Bar */}
+                  <div style={{ marginTop: '16px', paddingTop: '12px', borderTop: '1px solid #e2e8f0', textAlign: 'left' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                      <span style={{ fontSize: '11px', fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                        Ready-to-Test GeoTIFF Datasets (Click to Load):
+                      </span>
+                      <span style={{ fontSize: '10.5px', color: '#64748b' }}>
+                        Located in: <code>/sample_datasets_for_testing/</code>
+                      </span>
+                    </div>
+                    <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                      {[
+                        { name: 'Assam_12JUN2023_LISS4.tif', label: 'Assam (Primary Benchmark)', cloud: '80.98%' },
+                        { name: 'Assam_Brahmaputra_Floodplain.tif', label: 'Brahmaputra Floodplain', cloud: '80.98%' },
+                        { name: 'Tezpur_Hills_Dense_Forest.tif', label: 'Tezpur Hills Forest', cloud: '58.4%' },
+                        { name: 'Guwahati_Urban_Wetlands.tif', label: 'Guwahati Urban & Wetland', cloud: '42.1%' },
+                        { name: 'Nagaon_Agricultural_Paddy.tif', label: 'Nagaon Paddy Fields', cloud: '64.7%' },
+                        { name: 'Kaziranga_Riparian_Buffer.tif', label: 'Kaziranga Riparian', cloud: '71.3%' },
+                      ].map((ds) => (
+                        <button
+                          key={ds.name}
+                          onClick={() => {
+                            setUploadSceneName(ds.name);
+                            setHasProcessed(true);
+                            setCurrentStep(3);
+                            showToast('Test Dataset Loaded', `Loaded ${ds.name} (${ds.cloud} cloud). Rendered all 10 modalities.`);
+                          }}
+                          style={{
+                            background: uploadSceneName === ds.name ? '#dbeafe' : '#ffffff',
+                            color: uploadSceneName === ds.name ? '#1d4ed8' : '#334155',
+                            border: uploadSceneName === ds.name ? '1px solid #3b82f6' : '1px solid #cbd5e1',
+                            borderRadius: '4px',
+                            padding: '4px 8px',
+                            fontSize: '11px',
+                            cursor: 'pointer',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '4px',
+                            transition: 'all 0.15s ease',
+                          }}
+                          title={`Click to load ${ds.name} (${ds.cloud} cloud cover)`}
+                        >
+                          <span style={{ fontWeight: 600 }}>{ds.label}</span>
+                          <span style={{ fontSize: '9.5px', color: '#64748b' }}>({ds.cloud})</span>
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
@@ -1839,30 +2103,79 @@ export default function CloudRemovalPage({ onNavigate }) {
                     <div style={{ fontSize: '10.5px', color: '#64748b', marginTop: '2px' }}>
                       Format: GeoTIFF (3 Bands: Green, Red, NIR) • Projected CRS: EPSG:32646
                     </div>
-                    <label
-                      style={{
-                        display: 'inline-block',
-                        marginTop: '8px',
-                        background: '#0f172a',
-                        color: '#ffffff',
-                        padding: '4px 12px',
-                        borderRadius: '4px',
-                        fontSize: '11px',
-                        fontWeight: 600,
-                        cursor: 'pointer',
-                      }}
-                    >
-                      Browse Local Raster
-                      <input
-                        type="file"
-                        accept=".tif,.tiff,.geotiff"
-                        style={{ display: 'none' }}
-                        onChange={(e) => {
-                          const f = e.target.files && e.target.files[0];
-                          if (f) setUploadSceneName(f.name);
+                    <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', marginTop: '8px', flexWrap: 'wrap' }}>
+                      <label
+                        style={{
+                          display: 'inline-block',
+                          background: '#0f172a',
+                          color: '#ffffff',
+                          padding: '4px 12px',
+                          borderRadius: '4px',
+                          fontSize: '11px',
+                          fontWeight: 600,
+                          cursor: 'pointer',
                         }}
-                      />
-                    </label>
+                      >
+                        Browse Local Raster
+                        <input
+                          type="file"
+                          accept=".tif,.tiff,.geotiff"
+                          style={{ display: 'none' }}
+                          onChange={(e) => {
+                            const f = e.target.files && e.target.files[0];
+                            if (f) setUploadSceneName(f.name);
+                          }}
+                        />
+                      </label>
+                      <a
+                        href="/downloads/Assam_12JUN2023_LISS4.tif"
+                        download="Assam_12JUN2023_LISS4.tif"
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '4px',
+                          background: '#f1f5f9',
+                          color: '#166534',
+                          border: '1px solid #bbf7d0',
+                          padding: '4px 10px',
+                          borderRadius: '4px',
+                          fontSize: '11px',
+                          fontWeight: 600,
+                          textDecoration: 'none',
+                        }}
+                        title="Download sample GeoTIFF"
+                      >
+                        <Download size={11} color="#16a34a" />
+                        <span>Download Assam GeoTIFF</span>
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Sample Dataset Quick Selection */}
+                  <div style={{ marginBottom: '8px' }}>
+                    <span style={{ fontSize: '10.5px', color: '#64748b', fontWeight: 600, display: 'block', marginBottom: '4px' }}>
+                      Or select from pre-packaged test scenes:
+                    </span>
+                    <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
+                      {['Assam_12JUN2023_LISS4.tif', 'Assam_Brahmaputra_Floodplain.tif', 'Tezpur_Hills_Dense_Forest.tif', 'Guwahati_Urban_Wetlands.tif', 'Nagaon_Agricultural_Paddy.tif'].map((dsName) => (
+                        <button
+                          key={dsName}
+                          type="button"
+                          onClick={() => setUploadSceneName(dsName)}
+                          style={{
+                            fontSize: '10px',
+                            padding: '2px 6px',
+                            borderRadius: '3px',
+                            border: uploadSceneName === dsName ? '1px solid #2563eb' : '1px solid #cbd5e1',
+                            background: uploadSceneName === dsName ? '#eff6ff' : '#f8fafc',
+                            color: uploadSceneName === dsName ? '#1d4ed8' : '#475569',
+                            cursor: 'pointer',
+                          }}
+                        >
+                          {dsName.replace('.tif', '')}
+                        </button>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Scene Metadata Fields */}
@@ -2126,16 +2439,91 @@ export default function CloudRemovalPage({ onNavigate }) {
                   style={{ fontSize: '11.5px', padding: '5px 16px', display: 'flex', alignItems: 'center', gap: '6px' }}
                   onClick={() => {
                     setShowUploadModal(false);
-                    setCurrentStep(2);
-                    setHasProcessed(false);
-                    setToastMessage('Scene loaded and pre-flight verified. Output will appear after clicking "Run Inference".');
+                    setCurrentStep(3);
+                    setHasProcessed(true);
+                    setToastMessage({ title: 'Multi-Modal Generation Complete', desc: `Rendered all 9-10 imagery types for ${uploadSceneName}.` });
                   }}
                   id="confirm-upload-modal-btn"
                 >
                   <Check size={14} />
-                  <span>Confirm & Apply to Workspace</span>
+                  <span>Upload & Generate All 10 Modality Views</span>
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Lightbox Expand Modal for Any of the 10 Modalities */}
+      {expandedImage && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(15, 23, 42, 0.85)',
+            backdropFilter: 'blur(6px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 99999,
+            padding: '24px',
+          }}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setExpandedImage(null);
+          }}
+        >
+          <div
+            style={{
+              background: '#ffffff',
+              borderRadius: '12px',
+              maxWidth: '920px',
+              width: '100%',
+              overflow: 'hidden',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+              border: '1px solid #cbd5e1',
+            }}
+          >
+            <div style={{ padding: '14px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #e2e8f0', background: '#f8fafc' }}>
+              <div>
+                <h3 style={{ margin: 0, fontSize: '15px', fontWeight: 700, color: '#0f172a' }}>
+                  {expandedImage.title}
+                </h3>
+                <div style={{ fontSize: '11.5px', color: '#64748b', display: 'flex', alignItems: 'center', gap: '8px', marginTop: '3px' }}>
+                  {expandedImage.phase && (
+                    <span style={{ background: '#dbeafe', color: '#1e40af', padding: '1px 6px', borderRadius: '4px', fontWeight: 600, fontSize: '10.5px' }}>
+                      {expandedImage.phase}
+                    </span>
+                  )}
+                  <span>{expandedImage.badge} • {expandedImage.tagText}</span>
+                </div>
+              </div>
+              <button
+                className="btn-icon"
+                onClick={() => setExpandedImage(null)}
+                style={{ border: 'none', background: 'transparent', cursor: 'pointer', padding: '4px' }}
+              >
+                <X size={20} />
+              </button>
+            </div>
+            <div style={{ padding: '16px', background: '#0f172a', textAlign: 'center' }}>
+              <img
+                src={expandedImage.imageSrc}
+                alt={expandedImage.title}
+                style={{ maxWidth: '100%', maxHeight: '65vh', objectFit: 'contain', borderRadius: '6px' }}
+              />
+            </div>
+            <div style={{ padding: '14px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#f8fafc', borderTop: '1px solid #e2e8f0' }}>
+              <p style={{ margin: 0, fontSize: '12px', color: '#475569', maxWidth: '70%' }}>
+                {expandedImage.description}
+              </p>
+              <button
+                className="btn-primary"
+                style={{ fontSize: '12px', padding: '6px 14px', display: 'flex', alignItems: 'center', gap: '6px' }}
+                onClick={() => window.open(expandedImage.imageSrc, '_blank')}
+              >
+                <Download size={13} />
+                <span>Open High-Resolution</span>
+              </button>
             </div>
           </div>
         </div>

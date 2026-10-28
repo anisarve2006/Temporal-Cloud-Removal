@@ -1,8 +1,8 @@
 import React from 'react';
 import { SPECTRAL_ANALYSIS_DATA } from '../../data/mockData';
 
-export default function SpectralChart({ height = 150 }) {
-  const points = SPECTRAL_ANALYSIS_DATA.curvePoints;
+export default function SpectralChart({ height = 150, points: customPoints }) {
+  const points = customPoints || SPECTRAL_ANALYSIS_DATA.curvePoints;
   const minWl = 0.5;
   const maxWl = 0.9;
   const minVal = 0.0;

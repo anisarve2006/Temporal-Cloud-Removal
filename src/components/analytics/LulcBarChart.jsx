@@ -1,8 +1,9 @@
 import React from 'react';
 import { LULC_CLASSES } from '../../data/mockData';
 
-export default function LulcBarChart({ height = 150 }) {
-  const maxVal = 40; // Max percentage for scaling
+export default function LulcBarChart({ height = 150, classes: customClasses }) {
+  const classesList = customClasses || LULC_CLASSES;
+  const maxVal = Math.max(...classesList.map((c) => Math.max(c.cloudyArea || 0, c.percent || 0)), 35);
   const chartHeight = height - 40;
 
   return (
@@ -21,7 +22,7 @@ export default function LulcBarChart({ height = 150 }) {
 
       {/* Chart grid */}
       <div style={{ display: 'flex', alignItems: 'flex-end', height: `${chartHeight}px`, borderBottom: '1px solid #e2e8f0', gap: '12px', paddingBottom: '4px' }}>
-        {LULC_CLASSES.map((cls) => {
+        {classesList.map((cls) => {
           const cloudyH = (cls.cloudyArea / maxVal) * chartHeight;
           const reconH = (cls.percent / maxVal) * chartHeight;
 

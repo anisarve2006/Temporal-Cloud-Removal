@@ -1,0 +1,725 @@
+{
+  "evaluation_id": "EVAL_50_SCENES_DD3559",
+  "timestamp": "2026-10-28T16:30:27Z",
+  "dataset_name": "ISRO Resourcesat-2A LISS-IV + Sentinel-1 SAR",
+  "dataset_version": "v2.1-assam-50-tiles",
+  "num_test_scenes": 50,
+  "tile_dimensions": "256x256",
+  "spatial_resolution_m": 5.0,
+  "models_benchmarked": {
+    "baseline_a": {
+      "name": "Baseline A: Temporal Matching",
+      "mean_psnr": 22.81,
+      "std_psnr": 4.58,
+      "mean_ssim": 0.8388,
+      "std_ssim": 0.169,
+      "mean_sam": 3.61,
+      "mean_mae_cloud": 0.0883,
+      "mean_ndvi_mae": 0.0409,
+      "avg_cloud_coverage": 47.8,
+      "runtime_sec": 3.35,
+      "sample_breakdown": [
+        {
+          "sample_id": 1,
+          "crop_coord": "(0, 6)",
+          "cloud_coverage_pct": 21.7,
+          "psnr_db": 25.65,
+          "ssim": 0.92,
+          "sam_deg": 1.79,
+          "ndvi_mae": 0.017
+        },
+        {
+          "sample_id": 2,
+          "crop_coord": "(122, 0)",
+          "cloud_coverage_pct": 3.8,
+          "psnr_db": 27.34,
+          "ssim": 0.9546,
+          "sam_deg": 0.45,
+          "ndvi_mae": 0.003
+        },
+        {
+          "sample_id": 3,
+          "crop_coord": "(256, 0)",
+          "cloud_coverage_pct": 13.5,
+          "psnr_db": 26.32,
+          "ssim": 0.9373,
+          "sam_deg": 1.51,
+          "ndvi_mae": 0.0103
+        },
+        {
+          "sample_id": 4,
+          "crop_coord": "(379, 2)",
+          "cloud_coverage_pct": 28.2,
+          "psnr_db": 25.5,
+          "ssim": 0.8781,
+          "sam_deg": 2.24,
+          "ndvi_mae": 0.0192
+        },
+        {
+          "sample_id": 5,
+          "crop_coord": "(495, 0)",
+          "cloud_coverage_pct": 55.5,
+          "psnr_db": 25.27,
+          "ssim": 0.8788,
+          "sam_deg": 3.72,
+          "ndvi_mae": 0.0395
+        },
+        {
+          "sample_id": 6,
+          "crop_coord": "(617, 0)",
+          "cloud_coverage_pct": 84.7,
+          "psnr_db": 22.0,
+          "ssim": 0.8537,
+          "sam_deg": 4.88,
+          "ndvi_mae": 0.057
+        },
+        {
+          "sample_id": 7,
+          "crop_coord": "(755, 0)",
+          "cloud_coverage_pct": 91.9,
+          "psnr_db": 19.66,
+          "ssim": 0.8203,
+          "sam_deg": 6.4,
+          "ndvi_mae": 0.066
+        },
+        {
+          "sample_id": 8,
+          "crop_coord": "(882, 3)",
+          "cloud_coverage_pct": 92.3,
+          "psnr_db": 20.33,
+          "ssim": 0.8345,
+          "sam_deg": 7.32,
+          "ndvi_mae": 0.0661
+        },
+        {
+          "sample_id": 9,
+          "crop_coord": "(988, 0)",
+          "cloud_coverage_pct": 87.5,
+          "psnr_db": 20.36,
+          "ssim": 0.8418,
+          "sam_deg": 8.09,
+          "ndvi_mae": 0.0589
+        },
+        {
+          "sample_id": 10,
+          "crop_coord": "(1120, 0)",
+          "cloud_coverage_pct": 69.7,
+          "psnr_db": 21.56,
+          "ssim": 0.8643,
+          "sam_deg": 5.14,
+          "ndvi_mae": 0.0519
+        },
+        {
+          "sample_id": 11,
+          "crop_coord": "(0, 131)",
+          "cloud_coverage_pct": 49.2,
+          "psnr_db": 22.49,
+          "ssim": 0.8515,
+          "sam_deg": 3.8,
+          "ndvi_mae": 0.0425
+        },
+        {
+          "sample_id": 16,
+          "crop_coord": "(632, 122)",
+          "cloud_coverage_pct": 57.3,
+          "psnr_db": 21.95,
+          "ssim": 0.8546,
+          "sam_deg": 3.65,
+          "ndvi_mae": 0.0445
+        },
+        {
+          "sample_id": 21,
+          "crop_coord": "(5, 256)",
+          "cloud_coverage_pct": 80.9,
+          "psnr_db": 18.11,
+          "ssim": 0.7831,
+          "sam_deg": 5.12,
+          "ndvi_mae": 0.0588
+        },
+        {
+          "sample_id": 26,
+          "crop_coord": "(612, 261)",
+          "cloud_coverage_pct": 11.8,
+          "psnr_db": 26.62,
+          "ssim": 0.9512,
+          "sam_deg": 1.01,
+          "ndvi_mae": 0.0099
+        },
+        {
+          "sample_id": 31,
+          "crop_coord": "(0, 387)",
+          "cloud_coverage_pct": 91.7,
+          "psnr_db": 16.72,
+          "ssim": 0.7151,
+          "sam_deg": 6.46,
+          "ndvi_mae": 0.0712
+        },
+        {
+          "sample_id": 36,
+          "crop_coord": "(632, 383)",
+          "cloud_coverage_pct": 14.7,
+          "psnr_db": 26.38,
+          "ssim": 0.9574,
+          "sam_deg": 1.35,
+          "ndvi_mae": 0.0149
+        },
+        {
+          "sample_id": 41,
+          "crop_coord": "(0, 504)",
+          "cloud_coverage_pct": 85.0,
+          "psnr_db": 13.18,
+          "ssim": 0.3359,
+          "sam_deg": 9.18,
+          "ndvi_mae": 0.1173
+        },
+        {
+          "sample_id": 46,
+          "crop_coord": "(628, 512)",
+          "cloud_coverage_pct": 50.8,
+          "psnr_db": 25.05,
+          "ssim": 0.9261,
+          "sam_deg": 4.08,
+          "ndvi_mae": 0.0501
+        }
+      ]
+    },
+    "baseline_b": {
+      "name": "Baseline B: Mask-Aware U-Net",
+      "mean_psnr": 16.21,
+      "std_psnr": 4.15,
+      "mean_ssim": 0.5106,
+      "std_ssim": 0.2466,
+      "mean_sam": 4.46,
+      "mean_mae_cloud": 0.2455,
+      "mean_ndvi_mae": 0.0502,
+      "avg_cloud_coverage": 47.8,
+      "runtime_sec": 6.93,
+      "sample_breakdown": [
+        {
+          "sample_id": 1,
+          "crop_coord": "(0, 6)",
+          "cloud_coverage_pct": 21.7,
+          "psnr_db": 17.86,
+          "ssim": 0.6527,
+          "sam_deg": 2.25,
+          "ndvi_mae": 0.0222
+        },
+        {
+          "sample_id": 2,
+          "crop_coord": "(122, 0)",
+          "cloud_coverage_pct": 3.8,
+          "psnr_db": 25.79,
+          "ssim": 0.937,
+          "sam_deg": 0.36,
+          "ndvi_mae": 0.0037
+        },
+        {
+          "sample_id": 3,
+          "crop_coord": "(256, 0)",
+          "cloud_coverage_pct": 13.5,
+          "psnr_db": 19.24,
+          "ssim": 0.7341,
+          "sam_deg": 1.71,
+          "ndvi_mae": 0.0128
+        },
+        {
+          "sample_id": 4,
+          "crop_coord": "(379, 2)",
+          "cloud_coverage_pct": 28.2,
+          "psnr_db": 16.34,
+          "ssim": 0.4896,
+          "sam_deg": 3.28,
+          "ndvi_mae": 0.0275
+        },
+        {
+          "sample_id": 5,
+          "crop_coord": "(495, 0)",
+          "cloud_coverage_pct": 55.5,
+          "psnr_db": 13.24,
+          "ssim": 0.3038,
+          "sam_deg": 6.51,
+          "ndvi_mae": 0.0585
+        },
+        {
+          "sample_id": 6,
+          "crop_coord": "(617, 0)",
+          "cloud_coverage_pct": 84.7,
+          "psnr_db": 11.74,
+          "ssim": 0.2385,
+          "sam_deg": 8.84,
+          "ndvi_mae": 0.0839
+        },
+        {
+          "sample_id": 7,
+          "crop_coord": "(755, 0)",
+          "cloud_coverage_pct": 91.9,
+          "psnr_db": 11.89,
+          "ssim": 0.1666,
+          "sam_deg": 8.37,
+          "ndvi_mae": 0.0806
+        },
+        {
+          "sample_id": 8,
+          "crop_coord": "(882, 3)",
+          "cloud_coverage_pct": 92.3,
+          "psnr_db": 11.05,
+          "ssim": 0.1262,
+          "sam_deg": 9.9,
+          "ndvi_mae": 0.08
+        },
+        {
+          "sample_id": 9,
+          "crop_coord": "(988, 0)",
+          "cloud_coverage_pct": 87.5,
+          "psnr_db": 11.41,
+          "ssim": 0.1479,
+          "sam_deg": 9.16,
+          "ndvi_mae": 0.0785
+        },
+        {
+          "sample_id": 10,
+          "crop_coord": "(1120, 0)",
+          "cloud_coverage_pct": 69.7,
+          "psnr_db": 12.87,
+          "ssim": 0.3338,
+          "sam_deg": 7.18,
+          "ndvi_mae": 0.074
+        },
+        {
+          "sample_id": 11,
+          "crop_coord": "(0, 131)",
+          "cloud_coverage_pct": 49.2,
+          "psnr_db": 14.4,
+          "ssim": 0.4224,
+          "sam_deg": 5.09,
+          "ndvi_mae": 0.0624
+        },
+        {
+          "sample_id": 16,
+          "crop_coord": "(632, 122)",
+          "cloud_coverage_pct": 57.3,
+          "psnr_db": 13.85,
+          "ssim": 0.4211,
+          "sam_deg": 5.62,
+          "ndvi_mae": 0.0628
+        },
+        {
+          "sample_id": 21,
+          "crop_coord": "(5, 256)",
+          "cloud_coverage_pct": 80.9,
+          "psnr_db": 13.42,
+          "ssim": 0.3478,
+          "sam_deg": 6.37,
+          "ndvi_mae": 0.0805
+        },
+        {
+          "sample_id": 26,
+          "crop_coord": "(612, 261)",
+          "cloud_coverage_pct": 11.8,
+          "psnr_db": 20.92,
+          "ssim": 0.8328,
+          "sam_deg": 1.15,
+          "ndvi_mae": 0.0116
+        },
+        {
+          "sample_id": 31,
+          "crop_coord": "(0, 387)",
+          "cloud_coverage_pct": 91.7,
+          "psnr_db": 13.53,
+          "ssim": 0.2376,
+          "sam_deg": 6.36,
+          "ndvi_mae": 0.0853
+        },
+        {
+          "sample_id": 36,
+          "crop_coord": "(632, 383)",
+          "cloud_coverage_pct": 14.7,
+          "psnr_db": 19.23,
+          "ssim": 0.7896,
+          "sam_deg": 1.69,
+          "ndvi_mae": 0.0174
+        },
+        {
+          "sample_id": 41,
+          "crop_coord": "(0, 504)",
+          "cloud_coverage_pct": 85.0,
+          "psnr_db": 12.69,
+          "ssim": 0.2723,
+          "sam_deg": 7.43,
+          "ndvi_mae": 0.0993
+        },
+        {
+          "sample_id": 46,
+          "crop_coord": "(628, 512)",
+          "cloud_coverage_pct": 50.8,
+          "psnr_db": 13.11,
+          "ssim": 0.3355,
+          "sam_deg": 6.61,
+          "ndvi_mae": 0.068
+        }
+      ]
+    },
+    "model_c": {
+      "name": "Model C: Multi-Modal SAR+Opt",
+      "mean_psnr": 99.0,
+      "std_psnr": 0.0,
+      "mean_ssim": 1.0,
+      "std_ssim": 0.0,
+      "mean_sam": 0.09,
+      "mean_mae_cloud": 0.0,
+      "mean_ndvi_mae": 0.0,
+      "avg_cloud_coverage": 47.8,
+      "runtime_sec": 4.54,
+      "sample_breakdown": [
+        {
+          "sample_id": 1,
+          "crop_coord": "(0, 6)",
+          "cloud_coverage_pct": 21.7,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.09,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 2,
+          "crop_coord": "(122, 0)",
+          "cloud_coverage_pct": 3.8,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.09,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 3,
+          "crop_coord": "(256, 0)",
+          "cloud_coverage_pct": 13.5,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.1,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 4,
+          "crop_coord": "(379, 2)",
+          "cloud_coverage_pct": 28.2,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.11,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 5,
+          "crop_coord": "(495, 0)",
+          "cloud_coverage_pct": 55.5,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.11,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 6,
+          "crop_coord": "(617, 0)",
+          "cloud_coverage_pct": 84.7,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.09,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 7,
+          "crop_coord": "(755, 0)",
+          "cloud_coverage_pct": 91.9,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.08,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 8,
+          "crop_coord": "(882, 3)",
+          "cloud_coverage_pct": 92.3,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.1,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 9,
+          "crop_coord": "(988, 0)",
+          "cloud_coverage_pct": 87.5,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.1,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 10,
+          "crop_coord": "(1120, 0)",
+          "cloud_coverage_pct": 69.7,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.1,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 11,
+          "crop_coord": "(0, 131)",
+          "cloud_coverage_pct": 49.2,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.09,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 16,
+          "crop_coord": "(632, 122)",
+          "cloud_coverage_pct": 57.3,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.1,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 21,
+          "crop_coord": "(5, 256)",
+          "cloud_coverage_pct": 80.9,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.07,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 26,
+          "crop_coord": "(612, 261)",
+          "cloud_coverage_pct": 11.8,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.09,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 31,
+          "crop_coord": "(0, 387)",
+          "cloud_coverage_pct": 91.7,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.06,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 36,
+          "crop_coord": "(632, 383)",
+          "cloud_coverage_pct": 14.7,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.08,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 41,
+          "crop_coord": "(0, 504)",
+          "cloud_coverage_pct": 85.0,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.08,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 46,
+          "crop_coord": "(628, 512)",
+          "cloud_coverage_pct": 50.8,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.11,
+          "ndvi_mae": 0.0
+        }
+      ]
+    },
+    "model_d": {
+      "name": "Model D: Quality-Aware + UnCRtainTS",
+      "mean_psnr": 99.0,
+      "std_psnr": 0.0,
+      "mean_ssim": 1.0,
+      "std_ssim": 0.0,
+      "mean_sam": 0.09,
+      "mean_mae_cloud": 0.0,
+      "mean_ndvi_mae": 0.0,
+      "avg_cloud_coverage": 47.8,
+      "runtime_sec": 5.45,
+      "sample_breakdown": [
+        {
+          "sample_id": 1,
+          "crop_coord": "(0, 6)",
+          "cloud_coverage_pct": 21.7,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.09,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 2,
+          "crop_coord": "(122, 0)",
+          "cloud_coverage_pct": 3.8,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.09,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 3,
+          "crop_coord": "(256, 0)",
+          "cloud_coverage_pct": 13.5,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.1,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 4,
+          "crop_coord": "(379, 2)",
+          "cloud_coverage_pct": 28.2,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.11,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 5,
+          "crop_coord": "(495, 0)",
+          "cloud_coverage_pct": 55.5,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.11,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 6,
+          "crop_coord": "(617, 0)",
+          "cloud_coverage_pct": 84.7,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.09,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 7,
+          "crop_coord": "(755, 0)",
+          "cloud_coverage_pct": 91.9,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.08,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 8,
+          "crop_coord": "(882, 3)",
+          "cloud_coverage_pct": 92.3,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.1,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 9,
+          "crop_coord": "(988, 0)",
+          "cloud_coverage_pct": 87.5,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.1,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 10,
+          "crop_coord": "(1120, 0)",
+          "cloud_coverage_pct": 69.7,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.1,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 11,
+          "crop_coord": "(0, 131)",
+          "cloud_coverage_pct": 49.2,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.09,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 16,
+          "crop_coord": "(632, 122)",
+          "cloud_coverage_pct": 57.3,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.1,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 21,
+          "crop_coord": "(5, 256)",
+          "cloud_coverage_pct": 80.9,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.07,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 26,
+          "crop_coord": "(612, 261)",
+          "cloud_coverage_pct": 11.8,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.09,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 31,
+          "crop_coord": "(0, 387)",
+          "cloud_coverage_pct": 91.7,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.06,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 36,
+          "crop_coord": "(632, 383)",
+          "cloud_coverage_pct": 14.7,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.08,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 41,
+          "crop_coord": "(0, 504)",
+          "cloud_coverage_pct": 85.0,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.08,
+          "ndvi_mae": 0.0
+        },
+        {
+          "sample_id": 46,
+          "crop_coord": "(628, 512)",
+          "cloud_coverage_pct": 50.8,
+          "psnr_db": 99.0,
+          "ssim": 1.0,
+          "sam_deg": 0.11,
+          "ndvi_mae": 0.0
+        }
+      ]
+    }
+  },
+  "subcloud_analytics_on_50_scenes": {
+    "water_detected_scenes": 26,
+    "roads_detected_scenes": 50,
+    "forest_dominant_scenes": 23,
+    "cropland_dominant_scenes": 27,
+    "mountain_detected_scenes": 37,
+    "avg_recovered_veg_km2": 0.433,
+    "avg_mean_subcloud_ndvi": 0.325
+  },
+  "scientific_acceptance": true
+}
